@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Alta_Autor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Alta_AutorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alta_AutorResult" type="tns:Alta_Autor_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Alta_Autor_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RESULT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Consulta_Autores">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_AutoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_AutoresResult" type="tns:ArrayOfConsulta_Autores_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsulta_Autores_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Consulta_Autores_Result" nillable="true" type="tns:Consulta_Autores_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Consulta_Autores_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdAutor" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaAlta" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Consulta_Libro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Autor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_LibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_LibroResult" type="tns:ArrayOfConsulta_Libro_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsulta_Libro_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Consulta_Libro_Result" nillable="true" type="tns:Consulta_Libro_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Consulta_Libro_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdLibro" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Axo" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoPaginas" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaAlta" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Autor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Alta_Libro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Axo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NoPaginas" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Alta_LibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Alta_LibroResult" type="tns:Alta_Libro_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Alta_Libro_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RESULT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Actualiza_Libro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdLibro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Axo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NoPaginas" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdAutor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Actualiza_LibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Actualiza_LibroResult" type="tns:Actualiza_Libro_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Actualiza_Libro_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RESULT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Elimina_Libro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdLibro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Elimina_LibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Elimina_LibroResult" type="tns:Elimina_Libro_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Elimina_Libro_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RESULT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Alta_AutorSoapIn">
+    <wsdl:part name="parameters" element="tns:Alta_Autor" />
+  </wsdl:message>
+  <wsdl:message name="Alta_AutorSoapOut">
+    <wsdl:part name="parameters" element="tns:Alta_AutorResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_AutoresSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_Autores" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_AutoresSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_AutoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_LibroSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_Libro" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_LibroSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_LibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="Alta_LibroSoapIn">
+    <wsdl:part name="parameters" element="tns:Alta_Libro" />
+  </wsdl:message>
+  <wsdl:message name="Alta_LibroSoapOut">
+    <wsdl:part name="parameters" element="tns:Alta_LibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="Actualiza_LibroSoapIn">
+    <wsdl:part name="parameters" element="tns:Actualiza_Libro" />
+  </wsdl:message>
+  <wsdl:message name="Actualiza_LibroSoapOut">
+    <wsdl:part name="parameters" element="tns:Actualiza_LibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="Elimina_LibroSoapIn">
+    <wsdl:part name="parameters" element="tns:Elimina_Libro" />
+  </wsdl:message>
+  <wsdl:message name="Elimina_LibroSoapOut">
+    <wsdl:part name="parameters" element="tns:Elimina_LibroResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="Alta_Autor">
+      <wsdl:input message="tns:Alta_AutorSoapIn" />
+      <wsdl:output message="tns:Alta_AutorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Autores">
+      <wsdl:input message="tns:Consulta_AutoresSoapIn" />
+      <wsdl:output message="tns:Consulta_AutoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Libro">
+      <wsdl:input message="tns:Consulta_LibroSoapIn" />
+      <wsdl:output message="tns:Consulta_LibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Alta_Libro">
+      <wsdl:input message="tns:Alta_LibroSoapIn" />
+      <wsdl:output message="tns:Alta_LibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Actualiza_Libro">
+      <wsdl:input message="tns:Actualiza_LibroSoapIn" />
+      <wsdl:output message="tns:Actualiza_LibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Elimina_Libro">
+      <wsdl:input message="tns:Elimina_LibroSoapIn" />
+      <wsdl:output message="tns:Elimina_LibroSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Alta_Autor">
+      <soap:operation soapAction="http://tempuri.org/Alta_Autor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Autores">
+      <soap:operation soapAction="http://tempuri.org/Consulta_Autores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Libro">
+      <soap:operation soapAction="http://tempuri.org/Consulta_Libro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Alta_Libro">
+      <soap:operation soapAction="http://tempuri.org/Alta_Libro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualiza_Libro">
+      <soap:operation soapAction="http://tempuri.org/Actualiza_Libro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Elimina_Libro">
+      <soap:operation soapAction="http://tempuri.org/Elimina_Libro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Alta_Autor">
+      <soap12:operation soapAction="http://tempuri.org/Alta_Autor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Autores">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_Autores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Libro">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_Libro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Alta_Libro">
+      <soap12:operation soapAction="http://tempuri.org/Alta_Libro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualiza_Libro">
+      <soap12:operation soapAction="http://tempuri.org/Actualiza_Libro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Elimina_Libro">
+      <soap12:operation soapAction="http://tempuri.org/Elimina_Libro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="https://localhost:44311/Servcios/wsMiLibrero.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="https://localhost:44311/Servcios/wsMiLibrero.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
